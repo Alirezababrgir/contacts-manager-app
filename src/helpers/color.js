@@ -1,9 +1,8 @@
 //deracula color pallet
-
 export const Background="#282a36";	
 export const Current ="#44475a";
 export const Foreground="#f8f8f2";	
-export const comment	="#6272a4";	
+export const comment="#6272a4";	
 export const Cyan	="#8be9fd";	
 export const Green	="#50fa7b";	
 export const Orange	="#ffb86c";	
