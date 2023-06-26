@@ -1,11 +1,27 @@
-import { Fragment } from "react"; //import fragment
+import { comment, Red, Background } from "../../helpers/color";
+import Contact from "./contact";
 
 const Contacts = () => {
-    return(
-    <Fragment>
-        <h1 style={{ color: "white" }}>helloworld</h1>
-        <h1 style={{ color: "white" }}>fragment test!</h1>
-    </Fragment>
+    return (
+        <>
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <button type="button" style={{ backgroundColor: Background, color: comment }}>
+                            افزودن مخاطب جدید <span class="badge text-bg" style={{ color: Red }}><i class="bi bi-plus-lg" style={{fontSize:"larger"}}></i></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div className="container">
+                <div className="row align-aitem-center">
+                    <div className="col col-md-4">
+                        <Contact/>
+                    </div>
+                </div>
+            </div>
+
+        </>
     )
 }
 export default Contacts;

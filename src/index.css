@@ -7,16 +7,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 nav{
-  background-color: rgb(163, 144, 180) !important;
+  background-color: #64677c !important;
   height: 50px;
 }
 input[type="search"]{
-  background-color: #cdc5d8 !important;
-  border: 1px solid #404e79;
+background-color:#64677c!important;
+  border: 1px solid #202636;
   height: 35px;
 }
 input[type="search"]::-webkit-input-placeholder{
-  color: #637199;
+  color: #444d66;
 }
 button[type="submit"]{
   color: #404e79 !important;
@@ -26,4 +26,12 @@ button[type="submit"]{
 }
 .container-fluid{
   background-color: #282a36!important;
+}
+.card{
+  background-color: #202636;
+  color: #64677c;
+}
+ul,li{
+  background-color:#202636 ;
+  color: #64677c;
 }
