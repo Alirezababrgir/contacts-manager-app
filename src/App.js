@@ -6,10 +6,11 @@ import { useState } from 'react';
 //import { Fragment } from 'react';
 function App() {
   const [getstate,setstate]=useState([]);
+  const [getloader,setloader]=useState([false]);
   return (
     <div className='App'>
         <Navbar/>
-        <Contacts state={getstate}/>
+        <Contacts state={getstate} loaderprop={getloader}/>
     </div>
 
    
