@@ -1,4 +1,4 @@
-import { Purple, Cyan, Red, Orange } from "../../helpers/color";
+import { Purple, Red, Orange } from "../../helpers/color";
 const contact = () => {//contact card
     return (
         <div class="card" >

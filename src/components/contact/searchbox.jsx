@@ -1,4 +1,4 @@
-import { Purple,Background,comment } from "../../helpers/color";
+//import { Purple,Background,comment } from "../../helpers/color";
 const Sbox = () => {
     return (
         <form className="d-flex" role="search" dir="ltr">

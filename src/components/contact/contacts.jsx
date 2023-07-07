@@ -1,4 +1,3 @@
-import { within } from "@testing-library/react";
 import { comment, Red, Background, Orange } from "../../helpers/color";
 import Contact from "./contact";
 import Spinner from "../spinner";
@@ -30,7 +29,9 @@ const Contacts = ({ state, getloader }) => {
                                             <i class="fa-solid fa-magnifying-glass fa-beat-fade"></i>
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>
+                                        <div>
                                         <img className="w-180" src={require("../../asssets/notfound.gif")} />
+                                        </div>
                                     </>
                                 }
                             </div>
