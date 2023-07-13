@@ -15,12 +15,11 @@ const Contacts = ({ state, getloader }) => {
                 </div>
             </div>
             {
-                !getloader ? <Spinner /> :
-                    <div className="container">
-                        <div className="row align-aitem-center">
-                            <div className="col col-md-4">
-                                {state.length < 0 ? state.map(s => (
-                                    <Contact key={s.id} />
+                getloader ? <Spinner /> :
+                    <div className="container mt-4">
+                        <div className="row  justify-content-around">
+                                {state.length > 0 ? state.map(s => (
+                                    <Contact key={s.id} contact={s}/>
                                 )) :
                                     <>
                                         <div class="alert alert-warning alert-dismissible fade show" role="alert" style={{ backgroundColor: Orange }}>
@@ -36,7 +35,6 @@ const Contacts = ({ state, getloader }) => {
                                 }
                             </div>
                         </div>
-                    </div>
 
             }
 
