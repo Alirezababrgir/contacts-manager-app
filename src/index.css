@@ -1,7 +1,7 @@
 
 body {
-  background-color:rgb(87, 75, 87);
-  font-family:'vazir','tahoma','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  background-color:rgb(68, 51, 68);
+  font-family:'Vazir','tahoma','Ubuntu'
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,4 +38,7 @@ ul,li{
 .card{
   width: 400px;
   height: 650px;
+}
+input{
+border:  2px solid rgb(77, 17, 77) !important;
 }

@@ -10,13 +10,13 @@ const contact = ({contact}) => {//contact card
                 <h5 class="card-title"><i class="bi bi-person-check">{" "}</i>مشخصات مخاطب</h5>
                 <ul>
                     <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start ">نام و نام خانوادگی :<span> {contact.fullname}</span> </li>
-                    <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start">محل تولد :<span>{contact.city}</span></li>
-                    <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start">میزان تحصیلات :<span>{contact.work}</span></li>
+                    <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start"> ایمیل :<span>{contact.email}</span></li>
+                    <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start">میزان تحصیلات :<span>{contact.job}</span></li>
                 </ul>
                 <div class="card-footer">
                     شماره تماس :
                 </div>
-                <a href="#" class="btn btn-outline-success">{contact.phone}:{" "}<i class="bi bi-telephone-plus" style={{ color: Red }}></i></a>
+                <a href="#" class="btn btn-outline-success">{contact.mobile}:{" "}<i class="bi bi-telephone-plus" style={{ color: Red }}></i></a>
             </div>
         </div>
     )

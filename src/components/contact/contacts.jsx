@@ -1,4 +1,5 @@
-import { comment, Red, Background, Orange } from "../../helpers/color";
+import { Link } from "react-router-dom";
+import { Red, Background, Orange, Green } from "../../helpers/color";
 import Contact from "./contact";
 import Spinner from "../spinner";
 
@@ -8,9 +9,9 @@ const Contacts = ({ state, getloader }) => {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <button type="button" style={{ backgroundColor: Background, color: comment }}>
-                            افزودن مخاطب جدید <span class="badge text-bg" style={{ color: Red }}><i class="bi bi-plus-lg" style={{ fontSize: "larger" }}></i></span>
-                        </button>
+                        <Link to={"/contacts/add"} style={{ backgroundColor: Background, color: Red,}} id="linkadd">
+                            افزودن مخاطب جدید <span class="badge text-bg" style={{ color: Red }}><i class="bi bi-plus-lg" style={{ fontSize: "larger",color:Green }}></i></span>
+                        </Link>
                     </div>
                 </div>
             </div>
