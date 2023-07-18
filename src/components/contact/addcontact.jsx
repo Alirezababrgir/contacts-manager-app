@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { Green, comment, Purple } from "../../helpers/color";
 import Spinner from "../spinner";
-const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo ,sendformdata}) => {
+const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdata }) => {
     return (
 
         <>
+            <div style={{ height: "100px", overflow: "hidden" }} ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: "100%", width: "100%" }}><path d="M-169.58,186.03 C-51.63,39.97 283.57,-22.19 573.08,13.33 L504.79,-26.13 L-47.68,-50.80 Z" style={{ stroke: "none", fill: "#282a36" }}></path></svg></div>
+
             {getloader ? (
                 <Spinner />
             ) : (
@@ -16,7 +18,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo ,sendformdat
                             style={{
                                 position: "absolute",
                                 zIndex: "-1",
-                                top: "100px",
+                                top: "180px",
                                 left: "200px",
                                 opacity: "70%",
                             }}
