@@ -11,7 +11,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                 <Spinner />
             ) : (
                 <>
-                    <section className="p-3">
+                    <section className="p-3" style={{ opacity: "90%" }}>
                         <img
                             src={require("../../asssets/Content creation_Isometric.png")}
                             height="500px"
@@ -113,14 +113,13 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                                         <div className="mx-2">
                                             <input
                                                 type="submit"
-                                                className="btn"
-                                                style={{ backgroundColor: Purple }}
+                                                className="btn btn-success"
                                                 value="ساخت مخاطب"
                                             />
                                             <Link
                                                 to={"/contacts"}
-                                                className="btn mx-2"
-                                                style={{ backgroundColor: comment }}
+                                                className=" mx-4 btn btn-danger"
+                                                style={{ border: "2px solid rgb(77, 17, 77)" }}
                                             >
                                                 انصراف
                                             </Link>
