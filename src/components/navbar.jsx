@@ -6,7 +6,7 @@ const Navbar = () => {
         <nav className="navbar bg-body-tertiary container-fluid  sticky-top" style={{ backgroundColor: Background, height: "60px" }}>
             <div className="row">
                 <div className="col">
-                    <a className="navbar-brand" style={{ color: comment }}><img style={{height:"42px"}} src={require("../asssets/Phonebook_Lineal-coloured.png")}></img>{" "}وب ابلیکیشن مدیریت مخاطبین</a>
+                    <a  className="navbar-brand" style={{ color: comment }}><img style={{height:"42px"}} src={require("../asssets/Phonebook_Lineal-coloured.png")}></img>{" "}وب اپلیکیشن مدیریت مخاطبین</a>
                 </div>
                 <div className="col">
                     <Sbox />

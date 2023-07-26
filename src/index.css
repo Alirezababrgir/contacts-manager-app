@@ -1,8 +1,7 @@
 
 body {
   background-color:rgb(68, 51, 68);
-  font-family:'Vazir','tahoma','Ubuntu'
-    sans-serif;
+  font-family:'Vazir','Ubuntu';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -42,4 +41,3 @@ ul,li{
 input{
 border:  2px solid rgb(77, 17, 77) !important;
 }
- 
