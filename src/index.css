@@ -27,8 +27,9 @@ button[type="submit"]{
   background-color: #282a36!important;
 }
 .card{
-  background-color: #202636;
+  background-color:#202636;
   color: #64677c;
+  height: 680px !important;
 }
 ul,li{
   background-color:#202636 ;

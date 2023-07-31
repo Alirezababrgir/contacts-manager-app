@@ -2,17 +2,18 @@ import './App.css';
 import Contacts from './components/contact/contacts';
 import Navbar from './components/navbar';
 import Addcon from './components/contact/addcontact';
+import ViewCon from './components/contact/viewcontact';
 import { useEffect, useState } from 'react';
 //import Viewcon from './components/contact/viewcontact'
 import Editcon from './components/contact/editcontact'
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 //import axios from 'axios';
-import Contact from './components/contact/contact';
-import { Allcontacts, Allgroups ,Createcontact} from './services/contactservice';
+import { Allcontacts, Allgroups, Createcontact } from './services/contactservice';
 
 
 //import { Fragment } from 'react';
 function App() {
+  const [forceRender, setForceRender] = useState(false);
   const [getstate, setstate] = useState([]);
   const [getgroup, setgroup] = useState([]);
   const [getloader, setloader] = useState([false]);
@@ -24,6 +25,9 @@ function App() {
     job: "",
     group: "",
   });
+
+
+  const usenavigate = useNavigate();
 
   useEffect(() => {
     async function fetchdata() {
@@ -47,16 +51,36 @@ function App() {
 
   function setconfiginfo(event) { setaddContact({ ...getaddContact, [event.target.name]: event.target.value }) }
 
-  async function sendformdata(event) {event.preventDefault();
-    try{
-      const{status}=await Createcontact(getaddContact)
-     
-     if (status === 201) {
-      setaddContact({});
-      Navigate("/contacts");
-     }
-    }catch(err){
-console.log(err.message)
+
+  useEffect(() => {
+    async function fetchdata() {
+      try {
+        setloader(true);
+        const { data: contactdat } = await Allcontacts();
+        console.log(contactdat)
+        setstate(contactdat);
+        setloader(false);
+      } catch (err) {
+        console.log(err.message)
+
+      }
+
+    }
+    fetchdata();
+  }, [forceRender])
+
+  async function sendformdata(event) {
+    event.preventDefault();
+    try {
+      const { status } = await Createcontact(getaddContact)
+
+      if (status === 201) {
+        setaddContact({});
+        setForceRender(!forceRender);
+        usenavigate("/contacts");
+      }
+    } catch (err) {
+      console.log(err.message)
     }
   }
 
@@ -66,8 +90,8 @@ console.log(err.message)
       <Routes>
         <Route path="/" element={<Navigate to={"/contacts"} />} />
         <Route path='/contacts' element={<Contacts state={getstate} getloader={getloader} />} />
-        <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata}/>} />
-        <Route path='/contacts/:contactID' element={<Contact />} />
+        <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
+        <Route path='/contacts/:contactID' element={<ViewCon />} />
         <Route path='/contacts/edit/:contactID' element={<Editcon />} />
 
       </Routes>

@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 import { Purple, Red, Orange } from "../../helpers/color";
 const contact = ({ contact }) => {//contact card
     return (
-        <div class="card mt-4" style={{ border: "1px solid purple" }} >
+        <div class="card mt-4n p-1 mt-4" style={{ border: "1px solid purple"}} >
             <img src={contact.photo} class="card-img-top" alt="" style={{ opacity: "90%" }} />
             <div class="card-body">
-                <button type="button" class="btn"><i class="bi bi-pen-fill" style={{ color: Orange }} title="ویرایش"></i></button>{" "}
-                <button type="button" class="btn "><i class="bi bi-trash-fill" style={{ color: Red }} title="حذف"></i></button>{" "}
-                <button type="button" class="btn "><i class="bi bi-eye-fill" style={{ color: Purple }} title="جزییات بیشتر"></i></button>{" "}
+                <Link type="button" class="btn"><i class="bi bi-pen-fill" style={{ color: Orange }} title="ویرایش"></i></Link>{" "}
+                <Link type="button" class="btn "><i class="bi bi-trash-fill" style={{ color: Red }} title="حذف"></i></Link>{" "}
+                <Link to={`/contacts/${contact.id}`} type="button" class="btn "><i class="bi bi-eye-fill" style={{ color: Purple }} title="جزییات بیشتر"></i></Link>{" "}
                 <h5 class="card-title"><i class="bi bi-person-check">{" "}</i>مشخصات مخاطب</h5>
                 <ul>
                     <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start ">نام و نام خانوادگی :<span> {contact.fullname}</span> </li>

@@ -1,7 +1,7 @@
-//import { Link } from "react-router-dom";
-import { Red, Orange, Green, comment } from "../../helpers/color";
+import { Red } from "../../helpers/color";
 import Contact from "./contact";
 import Spinner from "../spinner";
+import { Link } from "react-router-dom";
 
 const Contacts = ({ state, getloader }) => {
     return (
@@ -23,7 +23,7 @@ const Contacts = ({ state, getloader }) => {
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                     <div>
-                                        <img className="w-180" style={{ opacity: "40%" }} src={require("../../asssets/404 Error_Lineal-coloured.png")} />
+                                        <img className="w-180" style={{ opacity: "30%" ,height:"380px"}} src={require("../../asssets/404 Error_Lineal-coloured.png")} />
                                     </div>
                                 </>
                             }
