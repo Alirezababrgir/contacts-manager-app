@@ -38,7 +38,7 @@ export const Createcontact = (contact) => {
 
 
 
-export const UPDATEcontact = (contactID, contact) => {
+export const UPDATEcontact = (contact,contactID) => {
     const url = `${SERVER_URL}/contacts/${contactID}`;//UPDATE(PUT) UNIC CONTACT BY CONTACTID ON SERVER JSON
     return axios.put(url, contact);
 }

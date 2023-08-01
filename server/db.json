@@ -28,7 +28,9 @@
       "id": 3
     },
     {
-      "fullname": "خسروجردی",
+      "fullname": [
+        "قدم خیر"
+      ],
       "photo": "https://toplearn.com/img/user/250x259/30649_15097320-5295-0027-2fb6-39e5e49a9817_%D8%A8%D9%87%D8%A7%D8%AF%D8%B1_%D9%82%D8%AF%D9%85%20%D8%AE%DB%8C%D8%B1.JPG",
       "job": "برنامه نویس",
       "email": "bahadoegh@gmail.com",

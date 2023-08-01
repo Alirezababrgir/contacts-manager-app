@@ -5,7 +5,7 @@ const contact = ({ contact }) => {//contact card
         <div class="card mt-4n p-1 mt-4" style={{ border: "1px solid purple"}} >
             <img src={contact.photo} class="card-img-top" alt="" style={{ opacity: "90%" }} />
             <div class="card-body">
-                <Link type="button" class="btn"><i class="bi bi-pen-fill" style={{ color: Orange }} title="ویرایش"></i></Link>{" "}
+                <Link to={`/contacts/edit/${contact.id}`} type="button" class="btn"><i class="bi bi-pen-fill" style={{ color: Orange }} title="ویرایش"></i></Link>{" "}
                 <Link type="button" class="btn "><i class="bi bi-trash-fill" style={{ color: Red }} title="حذف"></i></Link>{" "}
                 <Link to={`/contacts/${contact.id}`} type="button" class="btn "><i class="bi bi-eye-fill" style={{ color: Purple }} title="جزییات بیشتر"></i></Link>{" "}
                 <h5 class="card-title"><i class="bi bi-person-check">{" "}</i>مشخصات مخاطب</h5>
