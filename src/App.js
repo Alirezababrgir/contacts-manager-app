@@ -92,7 +92,7 @@ function App() {
         <Route path='/contacts' element={<Contacts state={getstate} getloader={getloader} />} />
         <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
         <Route path='/contacts/:contactID' element={<ViewCon />} />
-        <Route path='/contacts/edit/:contactID' element={<Editcon />} />
+        <Route path='/contacts/edit/:contactID' element={<Editcon forceRender={forceRender} setForceRender={setForceRender} />} />
 
       </Routes>
     </div>
