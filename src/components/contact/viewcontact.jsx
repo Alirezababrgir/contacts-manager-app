@@ -48,11 +48,13 @@ const ViewCon = () => {
             <section className="view-contact-intro p3 mt-4">
                 <div className="container">
                     <div className="row my-2 text-center">
-                        <p className="h4 fw-bold" style={{ color: Green }}>
+                        <p className="h4 fw-bold" style={{ color: Purple }}>
                       اطلاعات کامل مخاطب
+                      {' '}
+                      <i class="fa-solid fa-eye fa-beat-fade"></i>
                         </p>
                     </div>
-                    <hr style={{ backgroundColor: Green, height: "2px" }} />
+                    <hr style={{ backgroundColor: Purple, height: "2px" }} />
                 </div>
             </section>
 
@@ -65,7 +67,7 @@ const ViewCon = () => {
                         <section className="view-contact mt-e mt-4" style={{opacity:"90%"}}>
                             <div
                                 className="container p-4"
-                                style={{ borderRadius: "1em", backgroundColor: Current }}
+                                style={{ borderRadius: "1em", backgroundColor: Purple }}
                             >
                                 <div className="row align-items-center">
                                     <div className="col-md-2">
@@ -77,7 +79,7 @@ const ViewCon = () => {
                                         />
                                     </div>
                                     <div className="col-md-10" s>
-                                        <ul className="list-group" style={{ backgroundColor: Current }}>
+                                        <ul className="list-group" style={{ backgroundColor: Purple }}>
                                             <li className="list-group-item list-group-item-dark">
                                                 نام و نام خانوادگی :{" "}
                                                 <span className="fw-bold">{contact.fullname}</span>

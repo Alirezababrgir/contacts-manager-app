@@ -3,6 +3,7 @@ import Contacts from './components/contact/contacts';
 import Navbar from './components/navbar';
 import Addcon from './components/contact/addcontact';
 import ViewCon from './components/contact/viewcontact';
+import Delcon from './components/contact/delcon.jsx';
 import { useEffect, useState } from 'react';
 //import Viewcon from './components/contact/viewcontact'
 import Editcon from './components/contact/editcontact'
@@ -93,6 +94,7 @@ function App() {
         <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
         <Route path='/contacts/:contactID' element={<ViewCon />} />
         <Route path='/contacts/edit/:contactID' element={<Editcon forceRender={forceRender} setForceRender={setForceRender} />} />
+        <Route path='/contacts/del/:contactID' element={<Delcon forceRender={forceRender} setForceRender={setForceRender}/>} />
 
       </Routes>
     </div>

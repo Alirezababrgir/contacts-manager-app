@@ -7,7 +7,7 @@ import {
     Allgroups,
     UPDATEcontact,
 } from "../../services/contactservice";
-import { Purple, Green } from "../../helpers/color";
+import { Purple, Orange } from "../../helpers/color";
 import Spinner from "../spinner"
 
 const Editcon = ({forceRender,setForceRender}) => {
@@ -90,15 +90,17 @@ const Editcon = ({forceRender,setForceRender}) => {
                         <div className="container mb-4">
                             <div className="row my-2">
                                 <div className="col text-center">
-                                    <p className="h4 fw-bold" style={{ color: Green }}>
+                                    <p className="h4 fw-bold" style={{ color: Orange}}>
                                         ویرایش مخاطب
+                                        {' '}
+                                        <i class="fa-solid fa-pen fa-flip"></i>
                                     </p>
                                 </div>
                             </div>
-                            <hr style={{ backgroundColor: Green, height: "2px" }} />
+                            <hr style={{ backgroundColor: Orange, height: "2px" }} />
                             <div
                                 className="row p-3 w-75 mx-auto align-items-center mt-4"
-                                style={{ backgroundColor: "#44475a", borderRadius: "1em" }}
+                                style={{ backgroundColor: Orange, borderRadius: "1em" }}
                             >
                                 <div className="col-md-6">
                                     <img
@@ -185,7 +187,7 @@ const Editcon = ({forceRender,setForceRender}) => {
                                         <div className="mb-2">
                                             <input
                                                 type="submit"
-                                                className="btn btn-success"
+                                                className="btn btn-primary"
                                                 value="ویرایش مخاطب"
                                             />
                                             <Link
