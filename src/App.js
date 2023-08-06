@@ -3,16 +3,15 @@ import Contacts from './components/contact/contacts';
 import Navbar from './components/navbar';
 import Addcon from './components/contact/addcontact';
 import ViewCon from './components/contact/viewcontact';
-import Delcon from './components/contact/delcon.jsx';
 import { useEffect, useState } from 'react';
 //import Viewcon from './components/contact/viewcontact'
 import Editcon from './components/contact/editcontact'
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 //import axios from 'axios';
-import { Allcontacts, Allgroups, Createcontact } from './services/contactservice';
+import { Allcontacts, Allgroups, Createcontact, DELETcontact } from './services/contactservice';
+import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert frimework
 
 
-//import { Fragment } from 'react';
 function App() {
   const [forceRender, setForceRender] = useState(false);
   const [getstate, setstate] = useState([]);
@@ -85,17 +84,56 @@ function App() {
     }
   }
 
+  const confirm = (contactID) => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className='custom-ui' dir='rtl'>
+            <h4 className='mb-4'>مخاطب حذف شود ؟</h4>
+            <button className='btn btn-danger mx-2'
+              onClick={() => {
+                onClose();
+                Delet(contactID);
+                setForceRender(!forceRender)
+              }}
+            >
+              بله
+            </button>
+            <button className='btn btn-success mx-2' onClick={onClose}>خیر</button>
+          </div>
+        );
+      }
+
+    })
+  }
+
+  const Delet = async (contactID) => {
+    try {
+      setloader(true);
+      const res = await DELETcontact(contactID);
+      if (res) {
+        const { data: contactsdata } = await Allcontacts();
+        setaddContact(contactsdata);
+        setloader(false);
+      }
+
+    } catch (error) {
+      console.log(error.message)
+      setloader(false);
+    }
+
+
+  }
+
   return (
     <div className='App'>
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to={"/contacts"} />} />
-        <Route path='/contacts' element={<Contacts state={getstate} getloader={getloader} />} />
+        <Route path='/contacts' element={<Contacts state={getstate} getloader={getloader} deleteconfirm={confirm} />} />
         <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
         <Route path='/contacts/:contactID' element={<ViewCon />} />
         <Route path='/contacts/edit/:contactID' element={<Editcon forceRender={forceRender} setForceRender={setForceRender} />} />
-        <Route path='/contacts/del/:contactID' element={<Delcon forceRender={forceRender} setForceRender={setForceRender}/>} />
-
       </Routes>
     </div>
 

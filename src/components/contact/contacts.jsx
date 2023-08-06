@@ -1,9 +1,7 @@
 import { Red } from "../../helpers/color";
 import Contact from "./contact";
 import Spinner from "../spinner";
-import { Link } from "react-router-dom";
-
-const Contacts = ({ state, getloader }) => {
+const Contacts = ({ state, getloader,deleteconfirm }) => {
     return (
         <>
 
@@ -13,7 +11,7 @@ const Contacts = ({ state, getloader }) => {
                     <div className="container mt-4">
                         <div className="row  justify-content-around">
                             {state.length > 0 ? state.map(s => (
-                                <Contact key={s.id} contact={s} />
+                                <Contact key={s.id} deleteconfirm={()=>{deleteconfirm(s.id,s.fullname)}} contact={s} />
                             )) :
                                 <>
                                     <div class="alert alert-warning alert-dismissible fade show" role="alert" style={{ backgroundColor: "rgb(68, 51, 68)", color: "bisque",width:"400px" }}>

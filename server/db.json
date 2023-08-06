@@ -8,26 +8,6 @@
       "job": "برنامه نویس",
       "group": "1",
       "id": 1
-    },
-    {
-      "fullname": [
-        "ایمان مداعنی"
-      ],
-      "photo": "https://toplearn.com/img/user/250x259/2402cc6d-1d17-6a22-e6cc-39e3248f13a4_%D8%A7%DB%8C%D9%85%D8%A7%D9%86_%D9%85%D8%AF%D8%A7%D8%A6%D9%86%DB%8C9.jpg",
-      "job": "مدرس",
-      "email": "iman@gmail.com",
-      "group": "1",
-      "mobile": "09123555426",
-      "id": 2
-    },
-    {
-      "mobile": "09354434356",
-      "email": "amra@gmail.com",
-      "group": "1",
-      "fullname": "امرایی",
-      "job": "برنامه نویس",
-      "photo": "https://toplearn.com/img/user/250x259/fe032895-34a8-467b-a322-6f64b8ec6280_reza_amraei7.jpg",
-      "id": 3
     }
   ],
   "groups": [

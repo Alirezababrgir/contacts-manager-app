@@ -1,4 +1,4 @@
-import { Background, comment, Green, Red } from "../helpers/color"; //import dracula pallet
+import { Background, comment, Red } from "../helpers/color"; //import dracula pallet
 import { Link } from "react-router-dom";
 import Sbox from "./contact/searchbox";
 const Navbar = () => {

@@ -7,7 +7,7 @@ import {
     Allgroups,
     UPDATEcontact,
 } from "../../services/contactservice";
-import { Purple, Orange } from "../../helpers/color";
+import { Purple, Orange, Current } from "../../helpers/color";
 import Spinner from "../spinner"
 
 const Editcon = ({forceRender,setForceRender}) => {
@@ -100,7 +100,7 @@ const Editcon = ({forceRender,setForceRender}) => {
                             <hr style={{ backgroundColor: Orange, height: "2px" }} />
                             <div
                                 className="row p-3 w-75 mx-auto align-items-center mt-4"
-                                style={{ backgroundColor: Orange, borderRadius: "1em" }}
+                                style={{ backgroundColor: Current, borderRadius: "1em" }}
                             >
                                 <div className="col-md-6">
                                     <img

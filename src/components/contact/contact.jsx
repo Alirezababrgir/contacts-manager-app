@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { Purple, Red, Orange } from "../../helpers/color";
-const contact = ({ contact }) => {//contact card
+import { Purple, Red, Orange, Cyan } from "../../helpers/color";
+const contact = ({ contact,deleteconfirm }) => {//contact card
     return (
         <div class="card   p-1 mt-4" style={{ border: "1px solid purple"}}  >
             <img src={contact.photo} class="card-img-top" alt=""/>
             <div class="card-body">
                 <Link to={`/contacts/edit/${contact.id}`} type="button" class="btn"><i class="bi bi-pen-fill" style={{ color: Orange }} title="ویرایش"></i></Link>{" "}
-                <Link to={`/contacts/del/${contact.id}`}type="button" class="btn "><i class="bi bi-trash-fill" style={{ color: Red }} title="حذف"></i></Link>{" "}
                 <Link to={`/contacts/${contact.id}`} type="button" class="btn "><i class="bi bi-eye-fill" style={{ color: Purple }} title="جزییات بیشتر"></i></Link>{" "}
+                <button onClick={deleteconfirm} type="button" class="btn "><i class="bi bi-trash-fill" style={{ color: Red }} title="حذف شود"></i></button>{" "}
                 <h5 class="card-title"><i class="bi bi-person-check">{" "}</i>مشخصات مخاطب</h5>
                 <ul>
                     <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start ">نام و نام خانوادگی :<span> {contact.fullname}</span> </li>
