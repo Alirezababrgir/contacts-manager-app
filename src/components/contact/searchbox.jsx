@@ -1,11 +1,10 @@
 
-//import { Purple,Background,comment } from "../../helpers/color";
-const Sbox = () => {
-    return (
-        <form className="d-flex" role="search" dir="ltr">
-            <input className="form-control me-2" type="search" placeholder="جستجوی مخاطب " aria-label="Search" />
-            <button className="btn" type="submit"><i class="fa-solid fa-magnifying-glass fa-beat"></i></button>
-        </form>
-    )
+const Sbox = ({ getquery, contctSerach }) => {
+  return (
+    <form className="d-flex mt-1" role="search">
+      <button className="btn btn-success" type="submit"><i class="bi bi-search"></i></button>
+      <input className="form-control me-2" type="search" placeholder="جستجو" aria-label="Search" dir="rtl" value={getquery.text} onChange={contctSerach} />
+    </form>
+  )
 }
 export default Sbox;

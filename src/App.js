@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import Editcon from './components/contact/editcontact'
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 //import axios from 'axios';
-import { Allcontacts, Allgroups, Createcontact, DELETcontact } from './services/contactservice';
+import { Allcontacts, Allgroups, Createcontact, DELETcontact} from './services/contactservice';
 import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert frimework
 
 
@@ -24,7 +24,9 @@ function App() {
     email: "",
     job: "",
     group: "",
-  });
+});
+  const [getquery, setquery] = useState({ text: "" });
+  const [getFilteredContacts, setFilteredContacts] = useState([]);
 
 
   const usenavigate = useNavigate();
@@ -84,12 +86,12 @@ function App() {
     }
   }
 
-  const confirm = (contactID) => {
+  const confirm = (contactID, name) => {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
           <div className='custom-ui' dir='rtl'>
-            <h4 className='mb-4'>مخاطب حذف شود ؟</h4>
+            <h4 className='mb-4'>مخاطب{name} حذف شود ؟</h4>
             <button className='btn btn-danger mx-2'
               onClick={() => {
                 onClose();
@@ -121,13 +123,23 @@ function App() {
       console.log(error.message)
       setloader(false);
     }
-
-
   }
+
+  const contctSerach = (event) => {
+    setquery({ ...getquery, text: event.target.value });
+    const allCon = getstate.filter((contact)=>{
+      return contact.fullname
+      .toLowerCase()
+      .includes(event.target.value.toLowerCase());
+    });
+    setFilteredContacts(allCon);
+  };
+  
+
 
   return (
     <div className='App'>
-      <Navbar />
+      <Navbar getquery={getquery} contctSerach={contctSerach}/>
       <Routes>
         <Route path="/" element={<Navigate to={"/contacts"} />} />
         <Route path='/contacts' element={<Contacts state={getstate} getloader={getloader} deleteconfirm={confirm} />} />

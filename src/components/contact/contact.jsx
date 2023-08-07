@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Purple, Red, Orange, Cyan } from "../../helpers/color";
+import { Purple, Red, Orange } from "../../helpers/color";
 const contact = ({ contact,deleteconfirm }) => {//contact card
     return (
         <div class="card   p-1 mt-4" style={{ border: "1px solid purple"}}  >
