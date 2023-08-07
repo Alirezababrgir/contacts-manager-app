@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Green, comment, Purple } from "../../helpers/color";
+import { Green } from "../../helpers/color";
 import Spinner from "../spinner";
 const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdata }) => {
     return (

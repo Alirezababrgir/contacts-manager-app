@@ -8,11 +8,13 @@ import { useEffect, useState } from 'react';
 import Editcon from './components/contact/editcontact'
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 //import axios from 'axios';
-import { Allcontacts, Allgroups, Createcontact, DELETcontact} from './services/contactservice';
+import { Allcontacts, Allgroups, Createcontact, DELETcontact } from './services/contactservice';
 import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert frimework
 
 
+
 function App() {
+  const [getFilteredContacts, setFilteredContacts] = useState([]);
   const [forceRender, setForceRender] = useState(false);
   const [getstate, setstate] = useState([]);
   const [getgroup, setgroup] = useState([]);
@@ -24,10 +26,8 @@ function App() {
     email: "",
     job: "",
     group: "",
-});
+  });
   const [getquery, setquery] = useState({ text: "" });
-  const [getFilteredContacts, setFilteredContacts] = useState([]);
-
 
   const usenavigate = useNavigate();
 
@@ -68,14 +68,15 @@ function App() {
       }
 
     }
+
+
     fetchdata();
   }, [forceRender])
 
   async function sendformdata(event) {
     event.preventDefault();
     try {
-      const { status } = await Createcontact(getaddContact)
-
+      const { status } = await Createcontact(getaddContact);
       if (status === 201) {
         setaddContact({});
         setForceRender(!forceRender);
@@ -91,7 +92,7 @@ function App() {
       customUI: ({ onClose }) => {
         return (
           <div className='custom-ui' dir='rtl'>
-            <h4 className='mb-4'>مخاطب{name} حذف شود ؟</h4>
+            <h4 className='mb-4'>{name} حذف شود؟</h4>
             <button className='btn btn-danger mx-2'
               onClick={() => {
                 onClose();
@@ -125,31 +126,26 @@ function App() {
     }
   }
 
-  const contctSerach = (event) => {
+  const contctSerach = (event) => {//searching contacts ...
+    event.preventDefault();
     setquery({ ...getquery, text: event.target.value });
-    const allCon = getstate.filter((contact)=>{
-      return contact.fullname
-      .toLowerCase()
-      .includes(event.target.value.toLowerCase());
+    const allCon = getstate.filter((contact) => {
+      return contact.fullname.toLowerCase().includes(event.target.value.toLowerCase())
     });
     setFilteredContacts(allCon);
   };
-  
-
 
   return (
     <div className='App'>
-      <Navbar getquery={getquery} contctSerach={contctSerach}/>
+      <Navbar getquery={getquery} contctSerach={contctSerach} />
       <Routes>
         <Route path="/" element={<Navigate to={"/contacts"} />} />
-        <Route path='/contacts' element={<Contacts state={getstate} getloader={getloader} deleteconfirm={confirm} />} />
+        <Route path='/contacts' element={<Contacts state={getFilteredContacts} getloader={getloader} deleteconfirm={confirm} />} />
         <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
         <Route path='/contacts/:contactID' element={<ViewCon />} />
         <Route path='/contacts/edit/:contactID' element={<Editcon forceRender={forceRender} setForceRender={setForceRender} />} />
       </Routes>
     </div>
-
-
-  );
+  )
 }
 export default App;
