@@ -2,7 +2,7 @@ import { Background, comment, Red } from "../helpers/color"; //import dracula pa
 import { Link } from "react-router-dom";
 import Sbox from "./contact/searchbox";
 import { useLocation } from "react-router-dom";
-const Navbar = ({ getquery, contctSerach }) => {
+const Navbar = () => {
     const locaion = useLocation()
     return (
         <nav className="navbar bg-body-tertiary container-fluid  sticky-top" style={{ backgroundColor: Background, height: "60px" }}>
@@ -11,7 +11,7 @@ const Navbar = ({ getquery, contctSerach }) => {
                     <a className="navbar-brand" style={{ color: comment }}><img style={{ height: "42px" }} src={require("../asssets/Phonebook_Lineal-coloured.png")}></img>{" "}وب اپلیکیشن مدیریت مخاطبین</a>
                 </div>
                 {locaion.pathname === "/contacts" ? (<div className="col">
-                    <Sbox getquery={getquery} contctSerach={contctSerach} />
+                    <Sbox />
                 </div>) : null}
 
                 <div className="col mt-1" >

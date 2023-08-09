@@ -10,6 +10,7 @@ import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 //import axios from 'axios';
 import { Allcontacts, Allgroups, Createcontact, DELETcontact } from './services/contactservice';
 import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert frimework
+import { Contactcontext } from './context/contactcontext'; //import contextapi
 
 
 
@@ -137,14 +138,35 @@ function App() {
 
   return (
     <div className='App'>
-      <Navbar getquery={getquery} contctSerach={contctSerach} />
-      <Routes>
-        <Route path="/" element={<Navigate to={"/contacts"} />} />
-        <Route path='/contacts' element={<Contacts state={getFilteredContacts} getloader={getloader} deleteconfirm={confirm} />} />
-        <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
-        <Route path='/contacts/:contactID' element={<ViewCon />} />
-        <Route path='/contacts/edit/:contactID' element={<Editcon forceRender={forceRender} setForceRender={setForceRender} />} />
-      </Routes>
+      <Contactcontext.Provider value={{
+        getaddContact,
+        setaddContact,
+        getgroup,
+        setgroup,
+        getloader,
+        setloader,
+        getquery,
+        setquery,
+        getFilteredContacts,
+        setFilteredContacts,
+        getstate,
+        setstate,
+        forceRender,
+        setForceRender,
+        setconfiginfo,
+        contctSerach,
+        confirm,
+        sendformdata
+      }}>
+        <Navbar/>
+        <Routes>
+          <Route path="/" element={<Navigate to={"/contacts"} />} />
+          <Route path='/contacts' element={<Contacts state={getFilteredContacts} getloader={getloader} deleteconfirm={confirm} />} />
+          <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
+          <Route path='/contacts/:contactID' element={<ViewCon />} />
+          <Route path='/contacts/edit/:contactID' element={<Editcon forceRender={forceRender} setForceRender={setForceRender} />} />
+        </Routes>
+      </Contactcontext.Provider>
     </div>
   )
 }
