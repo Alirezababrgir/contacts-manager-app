@@ -1,7 +1,10 @@
+import { Contactcontext } from "../../context/contactcontext";
+import { useContext } from "react";
 import { Red } from "../../helpers/color";
 import Contact from "./contact";
 import Spinner from "../spinner";
-const Contacts = ({ state, getloader,deleteconfirm }) => {
+const Contacts = () => {
+    const { deleteconfirm, getloader,getFilteredContacts } = useContext(Contactcontext);
     return (
         <>
 
@@ -10,18 +13,18 @@ const Contacts = ({ state, getloader,deleteconfirm }) => {
                 getloader ? <Spinner /> :
                     <div className="container mt-4">
                         <div className="row  justify-content-around">
-                            {state.length > 0 ? state.map(s => (
-                                <Contact key={s.id} deleteconfirm={()=>{deleteconfirm(s.id,s.fullname)}} contact={s} />
+                            {getFilteredContacts.length > 0 ? getFilteredContacts.map(s => (
+                                <Contact key={s.id} deleteconfirm={() => { deleteconfirm(s.id, s.fullname) }} contact={s} />
                             )) :
                                 <>
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert" style={{ backgroundColor: "rgb(68, 51, 68)", color: "bisque",width:"400px" }}>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert" style={{ backgroundColor: "rgb(68, 51, 68)", color: "bisque", width: "400px" }}>
                                         <strong style={{ color: Red }}>متاسفانه</strong> مخاطب یافت نشد !
                                         {"    "}
                                         <i style={{ color: Red }} class="fa-solid fa-rotate-right fa-spin"></i>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
                                     <div>
-                                        <img className="w-180" style={{ opacity: "30%" ,height:"380px"}} src={require("../../asssets/404 Error_Lineal-coloured.png")} />
+                                        <img className="w-180" style={{ opacity: "30%", height: "380px" }} src={require("../../asssets/404 Error_Lineal-coloured.png")} />
                                     </div>
                                 </>
                             }

@@ -38,9 +38,8 @@ function App() {
         setloader(true);
         const { data: contactdat } = await Allcontacts();
         const { data: groupdata } = await Allgroups();
-        console.log(groupdata)
-        console.log(contactdat)
         setstate(contactdat);
+        setFilteredContacts(contactdat);
         setgroup(groupdata);
         setloader(false);
       } catch (err) {
@@ -50,29 +49,11 @@ function App() {
 
     }
     fetchdata();
-  }, [])
+  }, [forceRender])
+
+
 
   function setconfiginfo(event) { setaddContact({ ...getaddContact, [event.target.name]: event.target.value }) }
-
-
-  useEffect(() => {
-    async function fetchdata() {
-      try {
-        setloader(true);
-        const { data: contactdat } = await Allcontacts();
-        console.log(contactdat)
-        setstate(contactdat);
-        setloader(false);
-      } catch (err) {
-        console.log(err.message)
-
-      }
-
-    }
-
-
-    fetchdata();
-  }, [forceRender])
 
   async function sendformdata(event) {
     event.preventDefault();
@@ -88,7 +69,7 @@ function App() {
     }
   }
 
-  const confirm = (contactID, name) => {
+  const deleteconfirm = (contactID, name) => {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
@@ -125,16 +106,16 @@ function App() {
       console.log(error.message)
       setloader(false);
     }
-  }
+  };
 
   const contctSerach = (event) => {//searching contacts ...
-    event.preventDefault();
     setquery({ ...getquery, text: event.target.value });
     const allCon = getstate.filter((contact) => {
-      return contact.fullname.toLowerCase().includes(event.target.value.toLowerCase())
+      return contact.fullname.toLowerCase().includes(event.target.value.toLowerCase());
     });
     setFilteredContacts(allCon);
   };
+
 
   return (
     <div className='App'>
@@ -155,13 +136,13 @@ function App() {
         setForceRender,
         setconfiginfo,
         contctSerach,
-        confirm,
+        deleteconfirm,
         sendformdata
       }}>
-        <Navbar/>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Navigate to={"/contacts"} />} />
-          <Route path='/contacts' element={<Contacts state={getFilteredContacts} getloader={getloader} deleteconfirm={confirm} />} />
+          <Route path='/contacts' element={<Contacts />} />
           <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
           <Route path='/contacts/:contactID' element={<ViewCon />} />
           <Route path='/contacts/edit/:contactID' element={<Editcon forceRender={forceRender} setForceRender={setForceRender} />} />

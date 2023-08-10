@@ -3,7 +3,7 @@ import { createContext } from "react";
 export const Contactcontext=createContext({
     getloader:false,
     setloader:()=>{},
-    getstate:{},
+    getstate:[],
     setstate:()=>{},
     getaddContact:{},
     setaddContact:()=>{},
@@ -16,7 +16,7 @@ export const Contactcontext=createContext({
     setFilteredContacts:()=>{},
     contctSerach:()=>{},
     Delet:()=>{},
-    confirm:()=>{},
+    deleteconfirm:()=>{},
     sendformdata:()=>{},
     setconfiginfo:()=>{},
 })
