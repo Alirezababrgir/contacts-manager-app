@@ -1,9 +1,9 @@
 import { Background, comment, Red } from "../helpers/color"; //import dracula pallet
 import { Link } from "react-router-dom";
 import Sbox from "./contact/searchbox";
-import { useLocation } from "react-router-dom";
+import {useLocation} from "react-router-dom";
 const Navbar = () => {
-    const locaion = useLocation()
+    const locaion = useLocation();
     return (
         <nav className="navbar bg-body-tertiary container-fluid  sticky-top" style={{ backgroundColor: Background, height: "60px" }}>
             <div className="row">
@@ -13,12 +13,15 @@ const Navbar = () => {
                 {locaion.pathname === "/contacts" ? (<div className="col">
                     <Sbox />
                 </div>) : null}
+                {locaion.pathname === "/contacts" ? (
+                    <div className="col mt-1" >
+                        <Link to={"/contacts/add"} style={{ textDecoration: "none" }} className="btn btn-outline-success">
+                            افزودن مخاطب جدید <span class="badge text-bg"><i class="fa-solid fa-plus fa-bounce" style={{ fontSize: "16px", color: Red }}></i></span>
+                        </Link>
+                    </div>
+                ) : null}
 
-                <div className="col mt-1" >
-                    <Link to={"/contacts/add"} style={{ textDecoration: "none" }} className="btn btn-outline-success">
-                        افزودن مخاطب جدید <span class="badge text-bg"><i class="fa-solid fa-plus fa-bounce" style={{ fontSize: "16px", color: Red }}></i></span>
-                    </Link>
-                </div>
+
             </div>
         </nav>
     )

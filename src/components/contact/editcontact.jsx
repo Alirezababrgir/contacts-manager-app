@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -9,8 +9,11 @@ import {
 } from "../../services/contactservice";
 import { Purple, Orange, Current } from "../../helpers/color";
 import Spinner from "../spinner"
+import { Contactcontext } from "../../context/contactcontext";
 
-const Editcon = ({forceRender,setForceRender}) => {
+const Editcon = () => {
+    const {forceRender,setForceRender}=useContext(Contactcontext);//context api replace by props
+
     const { contactID } = useParams();
     const navigate = useNavigate();
 

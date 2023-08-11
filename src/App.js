@@ -75,11 +75,11 @@ function App() {
         return (
           <div className='custom-ui' dir='rtl'>
             <h4 className='mb-4'>{name} حذف شود؟</h4>
-            <button className='btn btn-danger mx-2'
+            <button className='btn btn-danger mx-2 '
               onClick={() => {
                 onClose();
                 Delet(contactID);
-                setForceRender(!forceRender)
+                setForceRender(!forceRender);
               }}
             >
               بله
@@ -143,9 +143,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to={"/contacts"} />} />
           <Route path='/contacts' element={<Contacts />} />
-          <Route path='/contacts/add' element={<Addcon loading={getloader} getgroup={getgroup} getaddcontact={getaddContact} setconfiginfo={setconfiginfo} sendformdata={sendformdata} />} />
+          <Route path='/contacts/add' element={<Addcon />} />
           <Route path='/contacts/:contactID' element={<ViewCon />} />
-          <Route path='/contacts/edit/:contactID' element={<Editcon forceRender={forceRender} setForceRender={setForceRender} />} />
+          <Route path='/contacts/edit/:contactID' element={<Editcon />} />
         </Routes>
       </Contactcontext.Provider>
     </div>

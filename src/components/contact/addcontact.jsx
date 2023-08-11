@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
-import { Green } from "../../helpers/color";
+import { Current, Green } from "../../helpers/color";
 import Spinner from "../spinner";
-const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdata }) => {
+import { useContext } from "react";
+import { Contactcontext } from "../../context/contactcontext";
+const Addcon = () => {
+    const{ getloader,getaddContact , getgroup, setconfiginfo, sendformdata }=useContext(Contactcontext); //contextapi
+
     return (
 
         <>
@@ -11,7 +15,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                 <Spinner />
             ) : (
                 <>
-                    <section className="p-3" style={{ opacity: "90%" }}>
+                    <section style={{ opacity: "90%" }}>
                         <img
                             src={require("../../asssets/Content creation_Isometric.png")}
                             height="500px"
@@ -37,12 +41,12 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                             <hr style={{ backgroundColor: Green, height: "2px" }} />
                             <div className="row mt-5">
                                 <div className="col-md-4">
-                                    <form onSubmit={sendformdata}>
+                                    <form style={{backgroundColor:Current,borderRadius:"20px"}} className="p-4" onSubmit={sendformdata}>
                                         <div className="mb-2">
                                             <input
                                                 name="fullname"
                                                 type="text"
-                                                value={getaddcontact.fullname}
+                                                value={getaddContact.fullname}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
                                                 placeholder="نام و نام خانوادگی"
@@ -53,7 +57,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                                             <input
                                                 name="photo"
                                                 type="text"
-                                                value={getaddcontact.photo}
+                                                value={getaddContact.photo}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
                                                 required={true}
@@ -64,7 +68,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                                             <input
                                                 name="mobile"
                                                 type="number"
-                                                value={getaddcontact.mobile}
+                                                value={getaddContact.mobile}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
                                                 required={true}
@@ -75,7 +79,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                                             <input
                                                 type="email"
                                                 name="email"
-                                                value={getaddcontact.email}
+                                                value={getaddContact.email}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
                                                 required={true}
@@ -86,7 +90,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                                             <input
                                                 type="text"
                                                 name="job"
-                                                value={getaddcontact.job}
+                                                value={getaddContact.job}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
                                                 required={true}
@@ -96,7 +100,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                                         <div className="mb-2">
                                             <select
                                                 name="group"
-                                                value={getaddcontact.group}
+                                                value={getaddContact.group}
                                                 onChange={setconfiginfo}
                                                 required={true}
                                                 className="form-control"
@@ -110,7 +114,7 @@ const Addcon = ({ getloader, getaddcontact, getgroup, setconfiginfo, sendformdat
                                                         </option>))}
                                             </select>
                                         </div>
-                                        <div className="mx-2">
+                                        <div className="mt-4">
                                             <input
                                                 type="submit"
                                                 className="btn btn-success"
