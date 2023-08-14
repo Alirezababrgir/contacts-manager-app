@@ -13,7 +13,6 @@ import { Contactcontext } from "../../context/contactcontext";
 
 const Editcon = () => {
     const {forceRender,setForceRender}=useContext(Contactcontext);//context api replace by props
-
     const { contactID } = useParams();
     const navigate = useNavigate();
 
