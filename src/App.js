@@ -107,13 +107,18 @@ function App() {
       setloader(false);
     }
   };
-
   const contctSerach = (event) => {//searching contacts ...
-    setquery({ ...getquery, text: event.target.value });
-    const allCon = getstate.filter((contact) => {
-      return contact.fullname.toLowerCase().includes(event.target.value.toLowerCase());
-    });
-    setFilteredContacts(allCon);
+      setquery({ ...getquery, text: event.target.value });
+      console.log(event.target.value)
+      const allCon = getstate.filter((contact) => {
+        return contact.fullname.toLowerCase().includes(event.target.value.toLowerCase());
+      });
+
+      let cleartimeout;
+      clearTimeout(cleartimeout);
+     cleartimeout= setTimeout(() => {  //set Debouncing for search box
+        setFilteredContacts(allCon);
+      }, 1000);
   };
 
 
