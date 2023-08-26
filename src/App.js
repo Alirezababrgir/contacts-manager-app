@@ -11,6 +11,7 @@ import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import { Allcontacts, Allgroups, Createcontact, DELETcontact } from './services/contactservice';
 import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert frimework
 import { Contactcontext } from './context/contactcontext'; //import contextapi
+//import _ from 'lodash';   //import lodash frimework
 
 
 
@@ -108,17 +109,17 @@ function App() {
     }
   };
   const contctSerach = (event) => {//searching contacts ...
-      setquery({ ...getquery, text: event.target.value });
-      console.log(event.target.value)
-      const allCon = getstate.filter((contact) => {
-        return contact.fullname.toLowerCase().includes(event.target.value.toLowerCase());
-      });
-
-      let cleartimeout;
-      clearTimeout(cleartimeout);
-     cleartimeout= setTimeout(() => {  //set Debouncing for search box
-        setFilteredContacts(allCon);
-      }, 1000);
+    setquery({ ...getquery, text: event.target.value });
+    console.log(event.target.value)
+    const allCon = getstate.filter((contact) => {
+      return contact.fullname.toLowerCase().includes(event.target.value.toLowerCase());
+    });
+    let claertimeout;
+    clearTimeout(claertimeout);
+    claertimeout = setTimeout(() => {
+      setFilteredContacts(allCon);
+    }, 1000);
+    //_.debounce( setFilteredContacts(allCon),1000)
   };
 
 
