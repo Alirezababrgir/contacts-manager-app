@@ -12,7 +12,7 @@ import { Allcontacts, Allgroups, Createcontact, DELETcontact } from './services/
 import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert frimework
 import { Contactcontext } from './context/contactcontext'; //import contextapi
 //import _ from 'lodash';   //import lodash frimework
-
+import { contactSchema } from './components/contact/validation/contactsvalidation';
 
 
 function App() {
@@ -30,6 +30,7 @@ function App() {
     group: "",
   });
   const [getquery, setquery] = useState({ text: "" });
+  const [error, setError] = useState([]);
 
   const usenavigate = useNavigate();
 
@@ -45,13 +46,27 @@ function App() {
         setloader(false);
       } catch (err) {
         console.log(err.message)
-
       }
 
     }
     fetchdata();
-  }, [forceRender])
+  }, []);
 
+  useEffect(() => {
+    async function fetchdata() {
+      try {
+        setloader(true);
+        const { data: contactdat } = await Allcontacts();
+        setstate(contactdat);
+        setFilteredContacts(contactdat);
+        setloader(false);
+      } catch (err) {
+        console.log(err.message)
+      }
+
+    }
+    fetchdata();
+  }, [forceRender]);
 
 
   function setconfiginfo(event) { setaddContact({ ...getaddContact, [event.target.name]: event.target.value }) }
@@ -59,14 +74,18 @@ function App() {
   async function sendformdata(event) {
     event.preventDefault();
     try {
+      await contactSchema.validate(getaddContact, { abortEarly: false })
       const { status } = await Createcontact(getaddContact);
       if (status === 201) {
+        setError([]);
         setaddContact({});
-        setForceRender(!forceRender);
         usenavigate("/contacts");
+        setForceRender(!forceRender);
       }
     } catch (err) {
-      console.log(err.message)
+      console.log(err)
+      setError(err.inner)
+      setForceRender(!forceRender);
     }
   }
 
@@ -143,7 +162,9 @@ function App() {
         setconfiginfo,
         contctSerach,
         deleteconfirm,
-        sendformdata
+        sendformdata,
+        error,
+        setError
       }}>
         <Navbar />
         <Routes>

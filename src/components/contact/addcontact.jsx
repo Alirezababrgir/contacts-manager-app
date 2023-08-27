@@ -4,7 +4,7 @@ import Spinner from "../spinner";
 import { useContext } from "react";
 import { Contactcontext } from "../../context/contactcontext";
 const Addcon = () => {
-    const{ getloader,getaddContact , getgroup, setconfiginfo, sendformdata }=useContext(Contactcontext); //contextapi
+    const { getloader, getaddContact, getgroup, setconfiginfo, sendformdata, error} = useContext(Contactcontext); //contextapi
 
     return (
 
@@ -40,8 +40,13 @@ const Addcon = () => {
                             </div>
                             <hr style={{ backgroundColor: Green, height: "2px" }} />
                             <div className="row mt-5">
+                                {error?.map((error, index) => (
+                                    <p key={index} className="text-danger">
+                                        {error.message}
+                                    </p>
+                                ))}
                                 <div className="col-md-4">
-                                    <form style={{backgroundColor:Current,borderRadius:"20px"}} className="p-4" onSubmit={sendformdata}>
+                                    <form style={{ backgroundColor: Current, borderRadius: "20px" }} className="p-4" onSubmit={sendformdata}>
                                         <div className="mb-2">
                                             <input
                                                 name="fullname"
@@ -50,7 +55,6 @@ const Addcon = () => {
                                                 onChange={setconfiginfo}
                                                 className="form-control"
                                                 placeholder="نام و نام خانوادگی"
-                                                required={true}
                                             />
                                         </div>
                                         <div className="mb-2">
@@ -60,7 +64,6 @@ const Addcon = () => {
                                                 value={getaddContact.photo}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
-                                                required={true}
                                                 placeholder="آدرس تصویر"
                                             />
                                         </div>
@@ -71,7 +74,6 @@ const Addcon = () => {
                                                 value={getaddContact.mobile}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
-                                                required={true}
                                                 placeholder="شماره موبایل"
                                             />
                                         </div>
@@ -82,7 +84,6 @@ const Addcon = () => {
                                                 value={getaddContact.email}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
-                                                required={true}
                                                 placeholder="آدرس ایمیل"
                                             />
                                         </div>
@@ -93,7 +94,6 @@ const Addcon = () => {
                                                 value={getaddContact.job}
                                                 onChange={setconfiginfo}
                                                 className="form-control"
-                                                required={true}
                                                 placeholder="شغل"
                                             />
                                         </div>
@@ -102,7 +102,6 @@ const Addcon = () => {
                                                 name="group"
                                                 value={getaddContact.group}
                                                 onChange={setconfiginfo}
-                                                required={true}
                                                 className="form-control"
                                             >
                                                 <option value="">انتخاب گروه</option>
