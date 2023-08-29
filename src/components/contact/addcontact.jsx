@@ -43,7 +43,7 @@ const Addcon = () => {
                                 </div>
                             </div>
                             <hr style={{ backgroundColor: Green, height: "2px" }} />
-                            <div className="row mt-5">
+                            <div className="row mt-4">
                                 <div className="col-md-4">
                                     <Formik
                                         initialValues={{
