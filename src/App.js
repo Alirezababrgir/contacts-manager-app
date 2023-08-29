@@ -71,7 +71,7 @@ function App() {
 
   async function sendformdata(values) {
     try {
-     // await contactSchema.validate(getaddContact, { abortEarly: false })
+      // await contactSchema.validate(getaddContact, { abortEarly: false }) //form validation by YUP
       const { status } = await Createcontact(values);
       if (status === 201) {
         usenavigate("/contacts");
@@ -89,7 +89,7 @@ function App() {
         return (
           <div className='custom-ui' dir='rtl'>
             <h4 className='mb-4'>{name} حذف شود؟</h4>
-            <button className='btn btn-danger mx-2 '
+            <button className='btn btn-danger mx-2 ' style={{ boxShadow: "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px" }}
               onClick={() => {
                 onClose();
                 Delet(contactID);
@@ -98,7 +98,8 @@ function App() {
             >
               بله
             </button>
-            <button className='btn btn-success mx-2' onClick={onClose}>خیر</button>
+            <button className='btn btn-success mx-2' onClick={onClose} style={{ boxShadow: "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px" }}
+            >خیر</button>
           </div>
         );
       }

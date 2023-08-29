@@ -12,7 +12,7 @@ import Spinner from "../spinner"
 import { Contactcontext } from "../../context/contactcontext";
 
 const Editcon = () => {
-    const {forceRender,setForceRender}=useContext(Contactcontext);//context api replace by props
+    const { forceRender, setForceRender } = useContext(Contactcontext);//context api replace by props
     const { contactID } = useParams();
     const navigate = useNavigate();
 
@@ -55,7 +55,7 @@ const Editcon = () => {
             ...state,
             contact: {
                 ...state.contact,
-            [event.target.name]:event.target.value,
+                [event.target.name]: event.target.value,
             },
         });
     };
@@ -92,7 +92,7 @@ const Editcon = () => {
                         <div className="container mb-4">
                             <div className="row my-2">
                                 <div className="col text-center">
-                                    <p className="h4 fw-bold" style={{ color: Orange}}>
+                                    <p className="h4 fw-bold" style={{ color: Orange }}>
                                         ویرایش مخاطب
                                         {' '}
                                         <i class="fa-solid fa-pen fa-flip"></i>
@@ -103,6 +103,7 @@ const Editcon = () => {
                             <div
                                 className="row p-3 w-75 mx-auto align-items-center mt-4"
                                 style={{ backgroundColor: Current, borderRadius: "1em" }}
+                                id="boxshadowedit"
                             >
                                 <div className="col-md-6">
                                     <img
@@ -111,7 +112,7 @@ const Editcon = () => {
                                         style={{ border: `2px solid ${Purple}` }}
                                     />
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-md-6" >
                                     <form onSubmit={sendform}>
                                         <div className="mb-2">
                                             <input
@@ -186,16 +187,17 @@ const Editcon = () => {
                                                     ))}
                                             </select>
                                         </div>
-                                        <div className="mb-2">
+                                        <div className="mt-3">
                                             <input
                                                 type="submit"
                                                 className="btn btn-primary"
                                                 value="ویرایش مخاطب"
+                                                style={{ boxShadow: "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px" }}
                                             />
                                             <Link
                                                 to={"/contacts"}
                                                 className="btn mx-2 btn-danger"
-                                                style={{ border: "2px solid rgb(77, 17, 77)" }}
+                                                style={{ border: "2px solid rgb(77, 17, 77)", boxShadow: "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px" }}
                                             >
                                                 انصراف
                                             </Link>

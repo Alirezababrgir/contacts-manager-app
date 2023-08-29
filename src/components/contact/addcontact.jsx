@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Current, Green, Purple } from "../../helpers/color";
+import { Current, Green, Purple, Red } from "../../helpers/color";
 import Spinner from "../spinner";
 import { useContext } from "react";
 import { Contactcontext } from "../../context/contactcontext";
@@ -28,12 +28,11 @@ const Addcon = () => {
     return (
 
         <>
-            <div style={{ height: "100px", overflow: "hidden" }} ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: "100%", width: "100%" }}><path d="M-169.58,186.03 C-51.63,39.97 283.57,-22.19 573.08,13.33 L504.79,-26.13 L-47.68,-50.80 Z" style={{ stroke: "none", fill: "#282a36" }}></path></svg></div>
-
             {getloader ? (
                 <Spinner />
             ) : (
                 <>
+                    <div style={{ height: "100px", overflow: "hidden" }} ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: "100%", width: "100%" }}><path d="M-169.58,186.03 C-51.63,39.97 283.57,-22.19 573.08,13.33 L504.79,-26.13 L-47.68,-50.80 Z" style={{ stroke: "none", fill: "#282a36" }}></path></svg></div>
                     <section style={{ opacity: "90%" }}>
                         <img
                             src={require("../../asssets/Content creation_Isometric.png")}
@@ -60,7 +59,7 @@ const Addcon = () => {
                             <hr style={{ backgroundColor: Green, height: "2px" }} />
                             <div className="row mt-5">
                                 <div className="col-md-4">
-                                    <form style={{ backgroundColor: Current, borderRadius: "20px" }}
+                                    <form id="formadd" style={{ backgroundColor: Current, borderRadius: "20px"}}
                                         className="p-4"
                                         onSubmit={Formic.handleSubmit}>
                                         <div className="mb-2">
@@ -151,7 +150,7 @@ const Addcon = () => {
                                         </div>
                                         <div className="mb-2">
                                             <select
-                                            style={{border:"2px solid rgb(77, 17, 77) "}}
+                                                style={{ border: "2px solid rgb(77, 17, 77) " }}
                                                 name="group"
                                                 value={Formic.values.group}
                                                 onChange={Formic.handleChange}
@@ -176,11 +175,12 @@ const Addcon = () => {
                                                 type="submit"
                                                 className="btn btn-success"
                                                 value="ساخت مخاطب"
+                                                style={{ boxShadow: "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px" }}
                                             />
                                             <Link
                                                 to={"/contacts"}
                                                 className=" mx-4 btn btn-danger"
-                                                style={{ border: "2px solid rgb(77, 17, 77)" }}
+                                                style={{ border: "2px solid rgb(77, 17, 77)", boxShadow: "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px" }}
                                             >
                                                 انصراف
                                             </Link>
