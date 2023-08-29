@@ -12,7 +12,6 @@ import { Allcontacts, Allgroups, Createcontact, DELETcontact } from './services/
 import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert frimework
 import { Contactcontext } from './context/contactcontext'; //import contextapi
 //import _ from 'lodash';   //import lodash frimework
-import { contactSchema } from './components/contact/validation/contactsvalidation';
 
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
     group: "",
   });
   const [getquery, setquery] = useState({ text: "" });
-  const [error, setError] = useState([]);
 
   const usenavigate = useNavigate();
 
@@ -71,20 +69,16 @@ function App() {
 
   function setconfiginfo(event) { setaddContact({ ...getaddContact, [event.target.name]: event.target.value }) }
 
-  async function sendformdata(event) {
-    event.preventDefault();
+  async function sendformdata(values) {
     try {
-      await contactSchema.validate(getaddContact, { abortEarly: false })
-      const { status } = await Createcontact(getaddContact);
+     // await contactSchema.validate(getaddContact, { abortEarly: false })
+      const { status } = await Createcontact(values);
       if (status === 201) {
-        setError([]);
-        setaddContact({});
         usenavigate("/contacts");
         setForceRender(!forceRender);
       }
     } catch (err) {
       console.log(err)
-      setError(err.inner)
       setForceRender(!forceRender);
     }
   }
@@ -163,8 +157,6 @@ function App() {
         contctSerach,
         deleteconfirm,
         sendformdata,
-        error,
-        setError
       }}>
         <Navbar />
         <Routes>

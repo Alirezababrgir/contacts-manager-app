@@ -19,6 +19,4 @@ export const Contactcontext=createContext({
     deleteconfirm:()=>{},
     sendformdata:()=>{},
     setconfiginfo:()=>{},
-    error:[],
-    setError:()=>{}
 })

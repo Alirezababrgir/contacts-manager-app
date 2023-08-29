@@ -1,10 +1,29 @@
 import { Link } from "react-router-dom";
-import { Current, Green } from "../../helpers/color";
+import { Current, Green, Purple } from "../../helpers/color";
 import Spinner from "../spinner";
 import { useContext } from "react";
 import { Contactcontext } from "../../context/contactcontext";
+import { contactSchema } from "./validation/contactsvalidation";//schema YUP add
+import { useFormik } from "formik"; //formik framework add
 const Addcon = () => {
-    const { getloader, getaddContact, getgroup, setconfiginfo, sendformdata, error} = useContext(Contactcontext); //contextapi
+    const { getloader, getgroup, sendformdata } = useContext(Contactcontext); //contextapi
+
+
+    const Formic = useFormik({ //useformik form validation
+        initialValues: {
+            fullname: "",
+            photo: "",
+            mobile: "",
+            email: "",
+            job: "",
+            group: ""
+        },
+        validationSchema: contactSchema,
+        onSubmit: (values) => {
+            sendformdata(values);
+        }
+    });
+
 
     return (
 
@@ -40,69 +59,105 @@ const Addcon = () => {
                             </div>
                             <hr style={{ backgroundColor: Green, height: "2px" }} />
                             <div className="row mt-5">
-                                {error?.map((error, index) => (
-                                    <p key={index} className="text-danger">
-                                        {error.message}
-                                    </p>
-                                ))}
                                 <div className="col-md-4">
-                                    <form style={{ backgroundColor: Current, borderRadius: "20px" }} className="p-4" onSubmit={sendformdata}>
+                                    <form style={{ backgroundColor: Current, borderRadius: "20px" }}
+                                        className="p-4"
+                                        onSubmit={Formic.handleSubmit}>
                                         <div className="mb-2">
                                             <input
+                                                id="fullname"
                                                 name="fullname"
                                                 type="text"
-                                                value={getaddContact.fullname}
-                                                onChange={setconfiginfo}
+                                                value={Formic.values.fullname}
+                                                onChange={Formic.handleChange}
+                                                onBlur={Formic.handleBlur}
                                                 className="form-control"
-                                                placeholder="نام و نام خانوادگی"
+                                                placeholder="نام و نام خانوادگی ..."
                                             />
+                                            {Formic.touched.fullname && Formic.errors.fullname ? (
+                                                <div className="text-danger">
+                                                    {Formic.errors.fullname}
+                                                </div>
+                                            ) : null}
+
                                         </div>
                                         <div className="mb-2">
                                             <input
+                                                id="photo"
                                                 name="photo"
                                                 type="text"
-                                                value={getaddContact.photo}
-                                                onChange={setconfiginfo}
+                                                value={Formic.values.photo}
+                                                onChange={Formic.handleChange}
+                                                onBlur={Formic.handleBlur}
                                                 className="form-control"
-                                                placeholder="آدرس تصویر"
+                                                placeholder="تصویر مخاطب"
                                             />
+                                            {Formic.touched.photo && Formic.errors.photo ? (
+                                                <div className="text-danger">
+                                                    {Formic.errors.photo}
+                                                </div>
+                                            ) : null}
                                         </div>
                                         <div className="mb-2">
                                             <input
+                                                id="mobile"
                                                 name="mobile"
                                                 type="number"
-                                                value={getaddContact.mobile}
-                                                onChange={setconfiginfo}
+                                                value={Formic.values.mobile}
+                                                onChange={Formic.handleChange}
+                                                onBlur={Formic.handleBlur}
                                                 className="form-control"
                                                 placeholder="شماره موبایل"
                                             />
+                                            {Formic.touched.mobile && Formic.errors.mobile ? (
+                                                <div className="text-danger">
+                                                    {Formic.errors.mobile}
+                                                </div>
+                                            ) : null}
                                         </div>
                                         <div className="mb-2">
                                             <input
+                                                id="email"
                                                 type="email"
                                                 name="email"
-                                                value={getaddContact.email}
-                                                onChange={setconfiginfo}
+                                                value={Formic.values.email}
+                                                onChange={Formic.handleChange}
+                                                onBlur={Formic.handleBlur}
                                                 className="form-control"
-                                                placeholder="آدرس ایمیل"
+                                                placeholder="ادرس ایمیل "
                                             />
+                                            {Formic.touched.email && Formic.errors.email ? (
+                                                <div className="text-danger">
+                                                    {Formic.errors.email}
+                                                </div>
+                                            ) : null}
                                         </div>
                                         <div className="mb-2">
                                             <input
+                                                id="text"
                                                 type="text"
                                                 name="job"
-                                                value={getaddContact.job}
-                                                onChange={setconfiginfo}
+                                                value={Formic.values.job}
+                                                onChange={Formic.handleChange}
+                                                onBlur={Formic.handleBlur}
                                                 className="form-control"
-                                                placeholder="شغل"
+                                                placeholder="شغل مخاطب"
                                             />
+                                            {Formic.touched.job && Formic.errors.job ? (
+                                                <div className="text-danger">
+                                                    {Formic.errors.job}
+                                                </div>
+                                            ) : null}
                                         </div>
                                         <div className="mb-2">
                                             <select
+                                            style={{border:"2px solid rgb(77, 17, 77) "}}
                                                 name="group"
-                                                value={getaddContact.group}
-                                                onChange={setconfiginfo}
+                                                value={Formic.values.group}
+                                                onChange={Formic.handleChange}
+                                                onBlur={Formic.handleBlur}
                                                 className="form-control"
+                                                placeholder="گروه "
                                             >
                                                 <option value="">انتخاب گروه</option>
 
@@ -112,6 +167,9 @@ const Addcon = () => {
                                                             {group.name}
                                                         </option>))}
                                             </select>
+                                            {Formic.errors.group && Formic.touched.group ?
+                                                (<div className="text-danger">{Formic.errors.group}</div>)
+                                                : null}
                                         </div>
                                         <div className="mt-4">
                                             <input
