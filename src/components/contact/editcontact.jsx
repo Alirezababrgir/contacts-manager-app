@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -14,11 +14,13 @@ import Spinner from "../spinner"
 
 import { Contactcontext } from "../../context/contactcontext";
 
+import { useImmer } from "use-immer"; //refactor setcontact and all context api by useImmer
+
 const Editcon = () => {
-    const { getstate, setstate, getloader, setloader, getgroup, setFilteredContacts } = useContext(Contactcontext);//context api replace by props
+    const {getloader, setloader, getgroup, setFilteredContacts } = useContext(Contactcontext);//context api replace by props
     const { contactID } = useParams();
     const navigate = useNavigate();
-    const [contact, setcontact] = useState({})
+    const [contact, setcontact] = useImmer({})
 
     useEffect(() => {
         const fetchData = async () => {
@@ -43,14 +45,18 @@ const Editcon = () => {
 
             if (status === 200) {
                 setloader(false);
-
-                const allContacts = [...getstate];
-                const contactIndex = allContacts.findIndex(
-                    (c) => c.id === parseInt(contactID)
-                );
-                allContacts[contactIndex] = { ...data };
-                setstate(allContacts);
-                setFilteredContacts(allContacts);
+                setcontact((draft) => {
+                    const contactIndex = draft.findIndex(
+                      (c) => c.id === parseInt(contactID)
+                    );
+                    draft[contactIndex] = { ...data };
+                  });
+                  setFilteredContacts((draft) => {
+                    const contactIndex = draft.findIndex(
+                      (c) => c.id === parseInt(contactID)
+                    );
+                    draft[contactIndex] = { ...data };
+                  });
                 navigate("/contacts");
             }
         } catch (err) {

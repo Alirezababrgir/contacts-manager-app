@@ -12,15 +12,17 @@ import { Allcontacts, Allgroups, Createcontact, DELETcontact } from './services/
 import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert frimework
 import { Contactcontext } from './context/contactcontext'; //import contextapi
 //import _ from 'lodash';   //import lodash frimework
+import { useImmer } from 'use-immer';
+import _ from 'lodash';
 
 
 function App() {
-  const [getFilteredContacts, setFilteredContacts] = useState([]);
-  const [forceRender, setForceRender] = useState(false);
-  const [getstate, setstate] = useState([]);
-  const [getgroup, setgroup] = useState([]);
-  const [getloader, setloader] = useState([false]);
-  const [getaddContact, setaddContact] = useState({
+  const [getFilteredContacts, setFilteredContacts] = useImmer([]);
+  const [forceRender, setForceRender] = useImmer(false);
+  const [getstate, setstate] = useImmer([]);
+  const [getgroup, setgroup] = useImmer([]);
+  const [getloader, setloader] = useImmer([false]);
+  const [getaddContact, setaddContact] = useImmer({
     fullname: "",
     photo: "",
     mobile: "",
@@ -28,7 +30,7 @@ function App() {
     job: "",
     group: "",
   });
-  const [getquery, setquery] = useState({ text: "" });
+  const [getquery, setquery] = useImmer({ text: "" });
 
   const usenavigate = useNavigate();
 
@@ -66,12 +68,8 @@ function App() {
     fetchdata();
   }, [forceRender]);
 
-
-  function setconfiginfo(event) { setaddContact({ ...getaddContact, [event.target.name]: event.target.value }) }
-
   async function sendformdata(values) {
     try {
-      // await contactSchema.validate(getaddContact, { abortEarly: false }) //form validation by YUP
       const { status } = await Createcontact(values);
       if (status === 201) {
         usenavigate("/contacts");
@@ -122,9 +120,9 @@ function App() {
       setloader(false);
     }
   };
+
   const contctSerach = (event) => {//searching contacts ...
-    setquery({ ...getquery, text: event.target.value });
-    console.log(event.target.value)
+    setquery(draft => { draft.text = event.target.value });
     const allCon = getstate.filter((contact) => {
       return contact.fullname.toLowerCase().includes(event.target.value.toLowerCase());
     });
@@ -135,7 +133,6 @@ function App() {
     }, 1000);
     //_.debounce( setFilteredContacts(allCon),1000)
   };
-
 
   return (
     <div className='App'>
@@ -154,7 +151,6 @@ function App() {
         setstate,
         forceRender,
         setForceRender,
-        setconfiginfo,
         contctSerach,
         deleteconfirm,
         sendformdata,

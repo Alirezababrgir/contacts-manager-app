@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import { Link, useParams } from "react-router-dom";
 
@@ -6,12 +6,14 @@ import { GETcontact, GETgroup } from "../../services/contactservice";
 
 import Spinner from "../../components/spinner"
 
-import { Current, Purple, Green } from "../../helpers/color";
+import { Current, Purple } from "../../helpers/color";
+
+import { useImmer } from "use-immer"; //refactor setstate by useImmer
 
 const ViewCon = () => {
     const { contactID } = useParams();
 
-    const [state, setState] = useState({
+    const [state, setState] = useImmer({
         loading: false,
         contact: {},
         group: {},
@@ -20,19 +22,15 @@ const ViewCon = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setState({ ...state, loading: true });
+                setState(draft => { draft.loading = true });
                 const { data: contactData } = await GETcontact(contactID);
                 const { data: groupData } = await GETgroup(contactData.group);
-
-                setState({
-                    ...state,
-                    loading: false,
-                    contact: contactData,
-                    group: groupData,
-                });
+                setState(draft => { draft.loading = false });
+                setState(draft => { draft.contact = contactData })
+                setState(draft => { draft.group = groupData })
             } catch (err) {
                 console.log(err.message);
-                setState({ ...state, loading: false });
+                setState(draft => { draft.loading = false});
             }
         };
 
