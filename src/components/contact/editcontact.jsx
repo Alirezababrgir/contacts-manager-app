@@ -1,20 +1,13 @@
 import { useContext, useEffect} from "react";
-
 import { Link, useNavigate, useParams } from "react-router-dom";
-
 import { Formik, ErrorMessage, Field, Form } from "formik"; //import component formik
-
 import { contactSchema } from "./validation/contactsvalidation";
-
 import { GETcontact, UPDATEcontact, } from "../../services/contactservice";
-
 import { Purple, Orange, Current } from "../../helpers/color";
-
 import Spinner from "../spinner"
-
 import { Contactcontext } from "../../context/contactcontext";
-
 import { useImmer } from "use-immer"; //refactor setcontact and all context api by useImmer
+import { toast } from 'react-toastify';//import  only toast function
 
 const Editcon = () => {
     const {getloader, setloader, getgroup, setFilteredContacts } = useContext(Contactcontext);//context api replace by props
@@ -44,6 +37,7 @@ const Editcon = () => {
             const { data, status } = await UPDATEcontact(values, contactID);
 
             if (status === 200) {
+                toast.success('مخاطب با موفقیت ویرایش شد !');
                 setloader(false);
                 setcontact((draft) => {
                     const contactIndex = draft.findIndex(

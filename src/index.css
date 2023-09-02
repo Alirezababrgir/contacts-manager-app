@@ -5,6 +5,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.Toastify__toast-body { 
+  font-family: 'Vazir' !important;
+}
 nav{
   background-color: #64677c !important;
   height: 50px;
@@ -27,20 +31,25 @@ button[type="submit"]{
   background-color: #282a36!important;
 }
 .card{
-  background-color:#202636;
-  color: #64677c;
+  background-color:#282a36;
+  color:#64677c ;
   height: 680px !important;
 }
-ul,li{
-  background-color:#202636 ;
-  color: #64677c;
+ul{
+  background-color:#282a36;
+  color: #6272a4; 
+  border-radius: 1rem;
 }
 .card{
   width: 400px;
   height: 650px;
 }
+
 input{
 border:  2px solid rgb(77, 17, 77) !important;
+}
+#card{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 #formadd{
   box-shadow:  rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;

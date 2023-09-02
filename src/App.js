@@ -3,7 +3,7 @@ import Contacts from './components/contact/contacts';
 import Navbar from './components/navbar';
 import Addcon from './components/contact/addcontact';
 import ViewCon from './components/contact/viewcontact';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 //import Viewcon from './components/contact/viewcontact'
 import Editcon from './components/contact/editcontact'
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
@@ -13,7 +13,8 @@ import { confirmAlert } from 'react-confirm-alert';//import react-confirm-alert 
 import { Contactcontext } from './context/contactcontext'; //import contextapi
 //import _ from 'lodash';   //import lodash frimework
 import { useImmer } from 'use-immer';
-import _ from 'lodash';
+import { toast, ToastContainer } from 'react-toastify';//import react-toastify functions
+
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
     try {
       const { status } = await Createcontact(values);
       if (status === 201) {
+        toast.success('مخاطب با موفقیت اضافه شد !');
         usenavigate("/contacts");
         setForceRender(!forceRender);
       }
@@ -111,6 +113,7 @@ function App() {
       const res = await DELETcontact(contactID);
       if (res) {
         const { data: contactsdata } = await Allcontacts();
+        toast.success('مخاطب با موفقیت حذف شد !');
         setaddContact(contactsdata);
         setloader(false);
       }
@@ -155,16 +158,28 @@ function App() {
         deleteconfirm,
         sendformdata,
       }}>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Navigate to={"/contacts"} />} />
-          <Route path='/contacts' element={<Contacts />} />
-          <Route path='/contacts/add' element={<Addcon />} />
-          <Route path='/contacts/:contactID' element={<ViewCon />} />
-          <Route path='/contacts/edit/:contactID' element={<Editcon />} />
-        </Routes>
-      </Contactcontext.Provider>
-    </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={7000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={true}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Navigate to={"/contacts"} />} />
+        <Route path='/contacts' element={<Contacts />} />
+        <Route path='/contacts/add' element={<Addcon />} />
+        <Route path='/contacts/:contactID' element={<ViewCon />} />
+        <Route path='/contacts/edit/:contactID' element={<Editcon />} />
+      </Routes>
+    </Contactcontext.Provider>
+    </div >
   )
 }
 export default App;

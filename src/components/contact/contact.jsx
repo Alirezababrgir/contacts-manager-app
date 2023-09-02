@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Purple, Red, Orange, Green } from "../../helpers/color";
 const contact = ({ contact, deleteconfirm }) => {//contact card
     return (
-        <div class="card p-1 mt-4" style={{ border: "1px solid purple" }}  >
+        <div class="card p-1 mt-4"id="card" >
             <img src={contact.photo} className="card-img-top" alt="" style={{ opacity: "90%" }} />
             <div className="card-body">
                 <Link to={`/contacts/${contact.id}`} type="button" class="btn "><i class="bi bi-eye-fill" style={{ color: Purple }} title="جزییات بیشتر"></i></Link>{" "}
@@ -13,7 +13,7 @@ const contact = ({ contact, deleteconfirm }) => {//contact card
                 <ul>
                     <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start ">نام و نام خانوادگی :<span> {contact.fullname}</span> </li>
                     <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start"> ایمیل :<span>{contact.email}</span></li>
-                    <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start">میزان تحصیلات :<span>{contact.job}</span></li>
+                    <li class="list-group-item ist-group-item  d-flex justify-content-between align-items-start"> شغل مخاطب: :<span>{contact.job}</span></li>
                 </ul>
                 <hr style={{ backgroundColor: "black", height: "1px" }} />
 
