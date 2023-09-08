@@ -51,22 +51,6 @@ function App() {
 
     }
     fetchdata();
-  }, []);
-
-  useEffect(() => {
-    async function fetchdata() {
-      try {
-        setloader(true);
-        const { data: contactdat } = await Allcontacts();
-        setstate(contactdat);
-        setFilteredContacts(contactdat);
-        setloader(false);
-      } catch (err) {
-        console.log(err.message)
-      }
-
-    }
-    fetchdata();
   }, [forceRender]);
 
   async function sendformdata(values) {
