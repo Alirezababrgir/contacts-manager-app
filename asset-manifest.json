@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/contacts-manager-app/static/css/main.850dbc12.css",
-    "main.js": "/contacts-manager-app/static/js/main.3a6bd675.js",
+    "main.js": "/contacts-manager-app/static/js/main.8eb88580.js",
     "static/js/787.9c733745.chunk.js": "/contacts-manager-app/static/js/787.9c733745.chunk.js",
     "static/media/Content creation_Isometric.png": "/contacts-manager-app/static/media/Content creation_Isometric.f47158e877e9679d5d53.png",
     "static/media/Phonebook_Lineal-coloured.png": "/contacts-manager-app/static/media/Phonebook_Lineal-coloured.214190ad4eccc60fce4b.png",
     "static/media/404 Error_Lineal-coloured.png": "/contacts-manager-app/static/media/404 Error_Lineal-coloured.10d1a6acde932f80ae9b.png",
     "index.html": "/contacts-manager-app/index.html",
     "main.850dbc12.css.map": "/contacts-manager-app/static/css/main.850dbc12.css.map",
-    "main.3a6bd675.js.map": "/contacts-manager-app/static/js/main.3a6bd675.js.map",
+    "main.8eb88580.js.map": "/contacts-manager-app/static/js/main.8eb88580.js.map",
     "787.9c733745.chunk.js.map": "/contacts-manager-app/static/js/787.9c733745.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.850dbc12.css",
-    "static/js/main.3a6bd675.js"
+    "static/js/main.8eb88580.js"
   ]
 }
